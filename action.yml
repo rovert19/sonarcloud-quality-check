@@ -1,0 +1,20 @@
+name: 'Quality Check'
+description: 'Print status from sonarcloud quality gates'
+inputs:
+  sonar-project-key:
+    description: "SonarQube project key"
+    required: true
+  sonar-token:
+    description: "SonarQube token for retrieving quality gate result"
+    required: true
+  # fail-on-quality-error:
+  #   description: "Set the action status to failed when quality gate status is `ERROR`"
+  branch:
+    description: "Branch name to retrieve the quality gate result"
+    required: true
+outputs:
+  project-status:
+    description: "Project's quality gate status"
+runs:
+  using: 'node20'
+  main: 'dist/index.js'    
