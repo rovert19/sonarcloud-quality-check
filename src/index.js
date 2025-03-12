@@ -26,7 +26,7 @@ function get_violated_conditions(result) {
     const conditions = result["conditions"]
     for (let condition in conditions) {
         if (condition["status"] == "ERROR") {
-            violated_conditions.append(condition["metricKey"]);
+            violated_conditions.push(condition["metricKey"]);
         }
     }
     return violated_conditions;
