@@ -23,9 +23,9 @@ async function fetchProjectStatus(
 
 function get_violated_conditions(result) {
     const violated_conditions = [];
-    const conditions = result["conditions"]
+    const conditions = result["conditions"];
     for (let condition in conditions) {
-        if (condition["status"] == "ERROR") {
+        if (condition["status"] === "ERROR") {
             violated_conditions.push(condition["metricKey"]);
         }
     }
@@ -48,10 +48,10 @@ function get_violated_conditions(result) {
 
         const violated_conditions = get_violated_conditions(result);
 
-        core.setOutput("project-status", result.projectStatus.status);
+        core.setOutput("project-status", result["projectStatus"]["status"]);
         
         let resultMessage = `Fallo en la validación de código. No cumple las siguientes condiciones: ${violated_conditions.join(',')}`;
-        if (result.projectStatus.status === "ERROR") {
+        if (result["projectStatus"]["status"] === "ERROR") {
             console.error(resultMessage);
             core.setFailed(resultMessage);
         } 
